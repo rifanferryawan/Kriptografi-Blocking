@@ -1,0 +1,76 @@
+<!--
+	BUATAN ANAK BANGSA BOS
+	RIFAN FERRYAWAN
+	DIGUNAKAN UNTUK PENDUKUNG MATERI KULIAH
+-->
+<html>
+<head>
+	<title>Kriptografi - Teknik Blocking</title>
+	<style>
+		body{
+			margin:0px;
+			padding:15px;
+			background:#eee;
+		}
+		input[type="text"]{
+			width:50px;
+			margin-bottom:5px;
+		}
+		textarea{
+			width:400px;
+			margin-bottom:15px;
+		}
+	</style>
+	<script>
+		function init(){
+			k1txt = parseInt(document.getElementById("key1").value);
+			intxt = (document.getElementById("itxt").value).toUpperCase();
+			ottxt = "";
+		}
+		
+		function enk(){
+			init();
+			//mendapatkan jumlah kolom dulu
+			kolom = intxt.length / k1txt;
+			
+			for(var x = 0; x < k1txt; x++){
+				for(var y = 0; y < kolom; y++){
+					ottxt += intxt.charAt(x+(k1txt*y));
+				}
+			}
+			document.getElementById("otxt").value = ottxt;
+		}
+		
+		function dek(){
+			init();
+			
+			for(var x = 0; x <= intxt.length; x++){
+				//setiap karakter akan dicocokan dengan key
+				for(var y = 0; y <= k2txt.length; y++){
+					//proses pencocokan
+					if( intxt.charAt(x) == k2txt.charAt(y)){
+						ottxt += k1txt.charAt(y);
+					}
+				}
+			}
+			document.getElementById("otxt").value = ottxt;
+		}
+	</script>
+</head>
+<body>
+	<h3>Kriptografi - Teknik Blocking</h3>
+	Skenario:<br>
+	Plaintext dituliskan secara vertikal ke bawah berurutan pada lajur dan dilanjutkan pada kolom berikutnya sampai seluruhnya tertulis.<br>
+	Ciphertext-nya adalah hasil pembacaan plaintext secara horizontal berurutan sesuai dengan blok-nya.
+	<form>
+		Jumlah blok<br>
+		<input type="text" id="key1" value="7"><br>
+		Input Text<br>
+		<textarea id="itxt"></textarea><br>
+		Output Text<br>
+		<textarea id="otxt"></textarea><br>
+		<input type="button" value="Enkripsi" onclick="enk();">
+		<input type="button" value="Dekripsi" onclick="dek();">
+	</form>
+</body>
+</html>
