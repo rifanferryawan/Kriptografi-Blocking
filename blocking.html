@@ -43,14 +43,12 @@
 		
 		function dek(){
 			init();
+			//mendapatkan jumlah kolom dulu
+			kolom = intxt.length / k1txt;
 			
-			for(var x = 0; x <= intxt.length; x++){
-				//setiap karakter akan dicocokan dengan key
-				for(var y = 0; y <= k2txt.length; y++){
-					//proses pencocokan
-					if( intxt.charAt(x) == k2txt.charAt(y)){
-						ottxt += k1txt.charAt(y);
-					}
+			for(var x = 0; x < kolom; x++){
+				for(var y = 0; y < k1txt; y++){
+					ottxt += intxt.charAt(x+(kolom*y));
 				}
 			}
 			document.getElementById("otxt").value = ottxt;
